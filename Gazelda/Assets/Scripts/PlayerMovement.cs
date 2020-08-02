@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
 		{
 			animator.SetFloat("lastMoveX", moveDirection.x);
 			animator.SetFloat("lastMoveY", moveDirection.y);
-		} else if ((moveDirection.x == 1 || moveDirection.x == -1) && (animTimer > animTimerThreshold))
+            animTimer = 0;
+        } else if ((moveDirection.x == 1 || moveDirection.x == -1) && (animTimer > animTimerThreshold))
         {
 			animator.SetFloat("lastMoveX", moveDirection.x);
 			animator.SetFloat("lastMoveY", 0);

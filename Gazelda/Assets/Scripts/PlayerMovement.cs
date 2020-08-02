@@ -7,16 +7,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	public float moveSpeed = 5f;
-	public Animator animator;
+    public Animator animator;
 
-	private Vector3 moveDirection;
+
+    private float animTimerThreshold = 0.1f;
+    private float animTimer = 0f;
+    private Vector3 moveDirection;
 	private bool isIdle;
 	private enum idleDirection
 	{
 		north, northWest, west, southWest, south, southEast, east, northEast
 	}
 	idleDirection direction = idleDirection.south;
-
+    
 	void Update()
     {
 		moveDirection.x = Input.GetAxisRaw("Horizontal");
@@ -30,15 +33,21 @@ public class PlayerMovement : MonoBehaviour
 		{
 			animator.SetFloat("lastMoveX", moveDirection.x);
 			animator.SetFloat("lastMoveY", moveDirection.y);
-		} else if (moveDirection.x == 1 || moveDirection.x == -1)
-		{
+		} else if ((moveDirection.x == 1 || moveDirection.x == -1) && (animTimer > animTimerThreshold))
+        {
 			animator.SetFloat("lastMoveX", moveDirection.x);
 			animator.SetFloat("lastMoveY", 0);
-		} else if (moveDirection.y == 1 || moveDirection.y == -1)
+            animTimer = 0;
+		} else if ((moveDirection.y == 1 || moveDirection.y == -1) && (animTimer > animTimerThreshold))
 		{
 			animator.SetFloat("lastMoveX", 0);
 			animator.SetFloat("lastMoveY", moveDirection.y);
-		}
+            animTimer = 0;
+        }else
+        {
+            animTimer += Time.fixedDeltaTime;
+        }
+
     }
 
 	private void FixedUpdate()

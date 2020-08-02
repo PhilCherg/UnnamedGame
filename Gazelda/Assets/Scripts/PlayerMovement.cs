@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
 	public float moveSpeed = 5f;
     public Animator animator;
 
-
-    private float animTimerThreshold = 0.1f;
+    private float animTimerThreshold = 0.2f;
     private float animTimer = 0f;
     private Vector3 moveDirection;
 	private bool isIdle;

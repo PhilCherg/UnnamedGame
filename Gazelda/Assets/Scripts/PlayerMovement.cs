@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float moveSpeed = 5f;
+	public float PlayerMoveSpeed = 5f;
     public Animator animator;
 
     private float animTimerThreshold = 0.2f;
@@ -52,6 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		transform.position += moveDirection.normalized * moveSpeed * Time.fixedDeltaTime;
+		transform.position += moveDirection.normalized * PlayerMoveSpeed * Time.fixedDeltaTime;
 	}
 }

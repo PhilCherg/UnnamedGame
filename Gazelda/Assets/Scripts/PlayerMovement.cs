@@ -10,8 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 	public GameObject mouse;
 
-    private float animTimerThreshold = 0.2f;
-    private float animTimer = 0f;
+    //private float animTimerThreshold = 0.2f;
+    //private float animTimer = 0f;
     private Vector3 moveDirection;
     private Vector3 faceDirection;
 	private bool isIdle;
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 		moveDirection.x = Input.GetAxisRaw("Horizontal");
 		moveDirection.y = Input.GetAxisRaw("Vertical");
 		faceDirection = mouse.transform.position - transform.position;
-		Debug.Log(faceDirection);
 		animator.SetFloat("moveX", moveDirection.x);
 		animator.SetFloat("moveY", moveDirection.y);
 		animator.SetFloat("magnitude", moveDirection.magnitude);

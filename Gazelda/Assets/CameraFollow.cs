@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 
 	public float cameraMoveSpeed = 10f;
 	public Transform PlayerCoordinates;
+	
 		
 	void Update()
 	{
@@ -28,5 +29,6 @@ public class CameraFollow : MonoBehaviour
 
 			transform.position = newCameraPosition;
         }
+
 	}
 }
